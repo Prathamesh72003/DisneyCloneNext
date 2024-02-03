@@ -1,10 +1,23 @@
-import { Button } from "@/components/ui/button";
+import MovieCarousel from "@/components/MovieCarousel";
+import { getPopularMovies, getTopRatedMovies, getUpcomingMovies } from "@/lib/getMovies";
 
-export default function Home() {
+export default async function Home() {
+
+  const upcomingMovies = await getUpcomingMovies();
+  const topRatedMovies = await getTopRatedMovies();
+  const popularMovies = await getPopularMovies();
+
   return (
     <main className="">
-      <h1 className="text-red-500">lets build diseny</h1>
-      <Button variant={"secondary"}>lets build</Button>
+      {/* <h1>lets build diseny</h1> */}
+
+      {/* CarouselBanner */}
+
+      <div>
+        <MovieCarousel movies={upcomingMovies} title='Upcoming' isVerticle/>
+        <MovieCarousel movies={topRatedMovies} title='Top Rated' />
+        <MovieCarousel movies={popularMovies} title='Popular' />
+      </div>
     </main>
   );
 }

@@ -1,20 +1,12 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import * as z from "zod";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-
-import * as z from "zod";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
   input: z.string().min(2).max(50),
@@ -34,8 +26,6 @@ function SearchInput() {
     console.log(values);
 
     router.push(`/search/${values.input}`);
-
-    form.reset();
   }
 
   return (
@@ -47,7 +37,7 @@ function SearchInput() {
           render={({ field }) => (
             <FormItem>
               <FormControl>
-                <Input {...field} placeholder="Search" />
+                <Input placeholder="Search..." {...field} />
               </FormControl>
             </FormItem>
           )}

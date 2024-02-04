@@ -39,7 +39,7 @@ Want to join our adventure? Here's how to install the Disney Clone app locally:
    ```bash
    npm install
 
-4. **Install Dependencies:**
+4. **API Configuration:**
    - To fetch movies, we're using the TMDB database and its APIs.
    - If you're running the app locally, you'll need to set up your TMDB API key.
    - Create a .env.local file in the project root and add the following line:
@@ -47,7 +47,7 @@ Want to join our adventure? Here's how to install the Disney Clone app locally:
    ```bash
    TMDB_API_KEY=your_tmdb_api_key_here
 
-6. **API Configuration:**
+6. **Start the Development Server:**
    ```bash
    npm run dev
 

@@ -1,3 +1,5 @@
+import MoviesCarousel from "@/components/MoviesCarousel"
+import { getDiscoverMovies } from "@/lib/getMovies"
 
 type Props = {
     params: {
@@ -8,9 +10,19 @@ type Props = {
     }
 }
 
-function GenrePage({params: {id}, searchParams: {genre}}: Props) {
+async function GenrePage({params: {id}, searchParams: {genre}}: Props) {
+  const movies = await getDiscoverMovies(id)
   return (
-    <div>GenrePage with id {id} and search term {genre}</div>
+    <div className="max-w-7xl mx-auto">
+      <div className="flex flex-col space-y-4 mt-32 xl:mt-42">
+        <h1 className="text-6xl font-bold px-10">Results for {genre}</h1>
+
+        {/* Azure AI Service */}
+
+
+        <MoviesCarousel title="Movies" movies={movies} isVertical/>
+      </div>
+    </div>
   )
 }
 
